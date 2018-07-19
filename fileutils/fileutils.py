@@ -134,12 +134,14 @@ def enumerate_files_local(path):
 
 
 # Hash function for local files
-def get_hash_local(fpath, block_size=65536):
+def get_hash_local(fpath, hash_function=hashlib.sha256, block_size=65536):
     '''
     based on: https://gist.github.com/rji/b38c7238128edf53a181#file-sha256-py
     vars renamed to support changing the checksum used without being annoying
+
+    hash_function is expected to work like standard hashlib functions.
     '''
-    checksum = hashlib.sha256()
+    checksum = hash_function()
     with open(fpath,'rb') as f:
         for block in iter(lambda: f.read(block_size), b''):
             checksum.update(block)
