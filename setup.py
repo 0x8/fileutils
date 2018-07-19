@@ -8,6 +8,8 @@ setup (
     long_description = 'Adds file related functions for handling copying of files'\
                     + ' some hashing options and more.',
 
-
+    install_requires = [
+        'coloredlogs==10.0'
+    ],
     packages = find_packages()
 )
